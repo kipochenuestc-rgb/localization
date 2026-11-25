@@ -1,0 +1,138 @@
+Panels:
+- Class: rviz_common/Displays
+  Name: Displays
+- Class: rviz_common/Views
+  Name: Views
+Visualization Manager:
+  Class: ''
+  Global Options:
+    Background Color: 24; 27; 32
+    Fixed Frame: map
+    Frame Rate: 15
+  Displays:
+  - Class: rviz_default_plugins/Image
+    Name: Four cameras - synchronized with current poses
+    Enabled: true
+    Topic:
+      Value: /localization/cameras/image
+      Reliability Policy: Reliable
+      Durability Policy: Transient Local
+      History Policy: Keep Last
+      Depth: 1
+    Transport Hint: raw
+    Queue Size: 2
+    Normalize Range: true
+    Min Value: 0
+    Max Value: 1
+    Median window: 5
+  - Class: rviz_default_plugins/Grid
+    Name: Ground grid
+    Enabled: true
+    Cell Size: 10
+    Plane Cell Count: 100
+    Alpha: 0.15
+    Reference Frame: <Fixed Frame>
+  - Class: rviz_default_plugins/PointCloud2
+    Name: Existing SLAM map
+    Enabled: true
+    Topic:
+      Value: /localization/map
+      Reliability Policy: Reliable
+      Durability Policy: Transient Local
+      History Policy: Keep Last
+      Depth: 1
+    Style: Points
+    Size (Pixels): 1
+    Position Transformer: XYZ
+    Color Transformer: FlatColor
+    Color: 110; 120; 135
+    Decay Time: 0
+  - Class: rviz_default_plugins/Path
+    Name: NDT EKF trajectory
+    Enabled: true
+    Topic:
+      Value: /localization/path
+      Reliability Policy: Reliable
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Depth: 1
+    Color: 255; 80; 80
+    Line Style: Lines
+    Line Width: 0.1
+    Buffer Length: 1
+  - Class: rviz_default_plugins/MarkerArray
+    Name: All camera centers - orange review - cyan GNSS
+    Enabled: false
+    Topic:
+      Value: /pose_audit/all_cameras
+      Reliability Policy: Reliable
+      Durability Policy: Transient Local
+      History Policy: Keep Last
+      Depth: 1
+  - Class: rviz_default_plugins/MarkerArray
+    Name: Live NDT camera poses and quality
+    Enabled: true
+    Topic:
+      Value: /localization/cameras
+      Reliability Policy: Reliable
+      Durability Policy: Transient Local
+      History Policy: Keep Last
+      Depth: 1
+  - Class: rviz_default_plugins/PointCloud2
+    Name: NDT registered scan
+    Enabled: true
+    Topic:
+      Value: /localization/registered_scan
+      Reliability Policy: Best Effort
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Depth: 5
+    Style: Points
+    Size (Pixels): 2
+    Size (m): 0.03
+    Decay Time: 0
+    Position Transformer: XYZ
+    Color Transformer: FlatColor
+    Channel Name: intensity
+    Autocompute Intensity Bounds: true
+    Use rainbow: true
+    Min Color: 0; 50; 255
+    Max Color: 255; 80; 0
+    Color: 255; 220; 80
+  - Class: rviz_default_plugins/Path
+    Name: GNSS antenna
+    Enabled: true
+    Topic:
+      Value: /localization/gnss_path
+      Reliability Policy: Reliable
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Depth: 5
+    Color: 80; 255; 80
+    Line Style: Lines
+    Line Width: 0.1
+    Buffer Length: 1
+  Tools:
+  - Class: rviz_default_plugins/MoveCamera
+  - Class: rviz_default_plugins/Interact
+    Hide Inactive Objects: true
+  - Class: rviz_default_plugins/Select
+  - Class: rviz_default_plugins/FocusCamera
+  - Class: rviz_default_plugins/Measure
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Distance: 330
+      Pitch: 1.1
+      Yaw: 0.7
+      Focal Point:
+        X: 0
+        Y: 140
+        Z: 0
+      Target Frame: <Fixed Frame>
+  Enabled: true
+Window Geometry:
+  Width: 1400
+  Height: 950
+  X: 30
+  Y: 30

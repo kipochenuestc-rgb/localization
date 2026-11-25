@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>ndt_localization</name><version>0.1.0</version>
+  <description>Quality-gated fixed-map NDT pose measurements for robot_localization EKF.</description>
+  <maintainer email="local@example.com">slam_lig</maintainer><license>BSD-3-Clause</license>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>rclcpp</depend><depend>sensor_msgs</depend><depend>nav_msgs</depend><depend>std_msgs</depend><depend>pcl_conversions</depend>
+  <export><build_type>ament_cmake</build_type></export>
+</package>
