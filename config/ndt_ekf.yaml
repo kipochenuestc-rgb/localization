@@ -39,10 +39,31 @@ ekf_filter_node:
     - false
     - false
     odom0_queue_size: 20
+    odom0_differential: false
+    odom1: /localization/gnss
+    odom1_config:
+    - true
+    - true
+    - false
+    - false
+    - false
+    - false
+    - false
+    - false
+    - false
+    - false
+    - false
+    - false
+    - false
+    - false
+    - false
+    odom1_queue_size: 20
+    odom1_differential: false
+    odom1_pose_rejection_threshold: 5.0
     odom_frame: localization_odom
     print_diagnostics: true
     publish_tf: true
     sensor_timeout: 0.3
     two_d_mode: false
     use_sim_time: true
-    world_frame: map
+    world_frame: localization_odom

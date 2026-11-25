@@ -9,7 +9,33 @@ All transforms use `map_from_reference`; the reference origin is LiDAR 1 with
 IMU axes. Camera optical axes are x right, y down, z forward. Camera transforms
 come from the same session calibration used by the RGB pipeline.
 
-## Reproduce in Ubuntu-24.04 / ROS Jazzy
+The default raw-bag replay uses the C++ front end, NDT and EKF. The [project
+README](../README.md) gives the build command and an example with a start offset.
+
+## Raw-bag replay results
+
+Five independent 30-second clips from `session_20261124_100923_5cbed2` were
+replayed at half speed with the full `new_data_20261124_gnss_buffered` surface
+map. Each clip contains the four original LiDAR topics, raw IMU and fixed GNSS.
+The denominator is the number of four-LiDAR groups with valid timestamp and IMU
+coverage in the extracted data. GNSS counts measure publications to the EKF input.
+
+| Bag interval (s) | Accepted NDT / available | GNSS to EKF | EKF poses | Horizontal difference P95 (m) |
+| --- | ---: | ---: | ---: | ---: |
+| 0–30 | 194 / 194 | 25 | 1441 | 0.313 |
+| 150–180 | 193 / 193 | 5 | 1410 | 0.327 |
+| 280–310 | 193 / 193 | 29 | 1443 | 0.379 |
+| 470–500 | 193 / 193 | 26 | 1407 | 0.283 |
+| 730–760 | 194 / 194 | 28 | 1429 | 0.022 |
+
+The horizontal difference compares EKF outputs to linearly interpolated XY
+positions from the same mapping run. The first four clips use optimized
+keyframes. The last clip is beyond the final keyframe at about 689.5 s and uses
+the continuous mapping trajectory for its initial seed and the offline comparison.
+These figures measure replay consistency. Absolute positioning accuracy and
+real-time throughput require separate tests.
+
+## Offline camera export in Ubuntu-24.04 / ROS Jazzy
 
 Run from `/mnt/d/slam/localization` after building the `src/ndt_localization`
 package in `/home/kipoc/ndt_ws`. The adjacent `slam_lig` checkout supplies the

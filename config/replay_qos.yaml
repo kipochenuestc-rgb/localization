@@ -1,0 +1,13 @@
+/point_cloud_hasco1: &lidar
+  history: keep_last
+  depth: 20
+  reliability: reliable
+  durability: volatile
+/point_cloud_hasco2: *lidar
+/point_cloud_hasco3: *lidar
+/point_cloud_hasco4: *lidar
+/imu/data:
+  history: keep_last
+  depth: 512
+  reliability: reliable
+  durability: volatile
